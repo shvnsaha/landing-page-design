@@ -164,7 +164,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md hover:text-gray-300 hover:bg-gray-700"
@@ -177,8 +177,95 @@ const Navbar = () => {
               )}
             </button>
           </div>
+
+
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {
+        isMenuOpen && (
+          <div className='lg:hidden'>
+              <div className='px-2 pt-2 pb-3 space-y-1'>
+                 {
+                  Object.keys(menuItems).map((key)=>(
+                    <div className='space-y-2'>
+                        <button
+                  onClick={() => toggleDropdown(key)}
+                  className="hover:text-gray-300 px-3 py-2 rounded-md  flex items-center"
+                >
+                  {menuItems[key].title}
+                  <MdKeyboardArrowDown 
+                    className={`ml-2 h-5 w-5 transition-transform ${
+                      activeDropdown === key ? 'transform rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                {activeDropdown === key && (
+                  <div className="pl-4">
+                      {key === 'platform' ? (
+                        menuItems[key].sections.map((section, idx) => (
+                          <div key={idx}>
+                            <h3 className="text-xs font-semibold text-gray-500 tracking-wider mb-2">
+                              {section.title}
+                            </h3>
+                            <div className="space-y-2">
+                              {section.items.map((item, itemIdx) => (
+                                <Link
+                                  key={itemIdx}
+                                  to={`/${key}/${item.name.toLowerCase()}`}
+                                  className="group flex items-start p-2 rounded-lg hover:bg-gray-600"
+                                >
+                                  <div>
+                                    <p className="text-sm font-medium text-white flex items-center">
+                                      {item.name}
+                                      {item.isNew && (
+                                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">
+                                          NEW
+                                        </span>
+                                      )}
+                                    </p>
+                                  </div>
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        <div className="space-y-2">
+                          {menuItems[key].items.map((item, idx) => (
+                            <Link
+                              key={idx}
+                              to={`/${key}/${item.name.toLowerCase()}`}
+                              className="group flex items-start p-2 rounded-lg hover:bg-gray-600"
+                            >
+                              <div>
+                                <p className="text-sm font-medium text-white">{item.name}</p>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                   
+                  </div>
+                )}
+                    </div>
+                  ))
+                 }
+              <Link to="/enterprise" className="block px-3 py-2 rounded-md hover:bg-gray-700">Enterprise</Link>
+            <Link to="/pricing" className="block px-3 py-2 rounded-md hover:bg-gray-700">Pricing</Link>
+            <Link to="/login" className="block px-3 py-2 rounded-md hover:bg-gray-700">Log in</Link>
+            <Link to="/contact-sales" className="block px-3 py-2 rounded-md hover:bg-gray-700">Contact sales</Link>
+            <Link 
+              to="/get-started" 
+              className="block px-3 py-2 rounded-md bg-blue-600 hover:bg-blue-700"
+            >
+              Get started — it's free
+            </Link>
+              </div>
+          </div>
+        )
+      }
     </nav>
   );
 };
