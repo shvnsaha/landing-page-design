@@ -1,5 +1,8 @@
 import { HiArrowRight } from "react-icons/hi";
 import { Link } from "react-router";
+import video from "../assets/banner-video.mp4"
+import bannerLeft from "../assets/banner-left.avif"
+ import bannerRight from "../assets/banner-right.png"
 
 
 const Hero = () => {
@@ -24,9 +27,27 @@ const Hero = () => {
                         <Link to={"/start-building"} className="bg-[#4353FF] hover:bg-blue-700 rounded px-8 py-4 font-medium text-lg transition-colors duration-200">Start building</Link>
 
                         <Link to={"/start-building"} className="hover:text-white/40 group flex items-center rounded px-8 py-4 font-medium text-lg transition-colors duration-200">Contact Sales
-                        <HiArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200"/>
+                            <HiArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
                         </Link>
                     </div>
+                </div>
+
+
+                {/* video */}
+                <div className="w-full h-full relative mt-16">
+                    <video src={video} autoPlay muted loop className="w-full h-full object-cover"></video>
+                    <div className="absolute top-1/2 z-20 xl:-left-20 md:-left-0 xl:block hidden">
+                        <img src={bannerLeft} alt="" className="lg:h-32 md:h-24 h-20  w-full object-cover" />
+                    </div>
+
+                    <div className='absolute bottom-1/5 xl:-right-20 md:-right-0 z-20 xl:block hidden'>
+                        <img src={bannerRight} alt="" className='lg:h-44 md:h-32 h-28 w-full object-cover' />
+                    </div>
+                </div>
+
+                {/* Overlay */}
+                <div className="absolute bottom-0 left-0 right-0 h-1/2 z-10 bg-gradient-to-t from-black to-transparent hidden md:block">
+
                 </div>
             </div>
         </div>
