@@ -76,12 +76,14 @@ const Navbar = () => {
                 <Link to={"/"} className="text-xl font-bold">Landing React</Link>
 
                 {/* desktop menu */}
-                <div>
+                <div className="hidden lg:flex items-center space-x-4">
                     {
                         Object.keys(menuItems).map((key)=>(
                             <div>
-                                <button>{menuItems[key].title}</button>
-                                <MdKeyboardArrowDown className={`ml-2 h-5 w-5 transition-transform `}/>
+                                <button onClick={()=>toggleDropdown(key)} className="hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium flex items-center">{menuItems[key].title}
+                                <MdKeyboardArrowDown className={`ml-2 h-5 w-5 transition-transform ${activeDropdown === key ? 'transform rotate-180' : ''}`}/>
+                                </button>
+                                
                             </div>
                         ))
                     }
