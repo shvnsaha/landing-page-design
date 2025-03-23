@@ -56,7 +56,7 @@ const menuItems = {
 
 // company logo data
 
-const logos = [
+ const logos = [
     { src: "https://cdn.prod.website-files.com/66e88746834b80507cdf7933/66e8a82d52566d454c99501c_Discord.svg", alt: "Discord", width: 130, height: 27 },
     { src: "https://cdn.prod.website-files.com/66e88746834b80507cdf7933/66e8a82d52566d454c994fcd_NCR.svg", alt: "NCR", width: 98, height: 30 },
     { src: "https://cdn.prod.website-files.com/66e88746834b80507cdf7933/66e8a82b52566d454c994910_mondaycom.svg", alt: "Monda.com", width: 134, height: 26 },
