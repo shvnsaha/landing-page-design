@@ -28,7 +28,7 @@ const CompanyLogo = () => {
             {/* logo animation */}
             <div className="flex animate-marquee">
                 {
-                    [logos,logos].map((logoSet,setIdx)=>(
+                    [logos,logos].map((logoSet)=>(
                         <div className="flex shirk-0 min-w-full items-center justify-around px-4">
                            {
                             logoSet.map((logo,idx)=>(
